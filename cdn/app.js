@@ -10,18 +10,18 @@
 // }
 
 
-var x = document.getElementById("show").innerText;
+var client_username = document.getElementById("show").innerText;
     
-var abc = `https://www.instagram.com/${x}/?__a=1`;
+var client_abc = `https://www.instagram.com/${x}/?__a=1`;
 
 
 // document.getElementById("show").innerText = "";
 
 
  
- function fetchnow(abc){
+ function fetchnow(client_abc){
 
-  fetch( `https://www.instagram.com/${abc}/?__a=1` )
+  fetch( `https://www.instagram.com/${client_abc}/?__a=1` )
   .then( (res) => res.json() )
   .then( (data) => {
    
