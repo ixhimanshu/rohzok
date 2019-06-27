@@ -13,8 +13,8 @@ console.log(client_abc);
 
  
 
-
-  fetch( `https://www.instagram.com/${client_abc}/?__a=1` )
+function fetchClient(client_abc){
+  fetch( client_abc )
   .then( (res) => res.json() )
   .then( (data) => {
    
@@ -43,6 +43,10 @@ console.log(client_abc);
 //   setTimeout(() => {
 //     document.getElementById('code').style.display = "block";
 //   }, 2000)
+ 
+}
+
+fetchClient(client_abc)
  
 
 
