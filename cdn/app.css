@@ -1,0 +1,10 @@
+#show{
+    display: flex;
+    flex-wrap: wrap;
+}
+.insta {
+height: 200px;
+width: 200px;
+margin: 1rem;
+box-shadow: 0 5px 10px #ccc;
+}
