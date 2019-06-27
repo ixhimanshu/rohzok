@@ -10,7 +10,7 @@ var client_abc = `https://www.instagram.com/${client_username}/?__a=1`;
 
 
  
- function fetchnow(client_abc){
+
 
   fetch( `https://www.instagram.com/${client_abc}/?__a=1` )
   .then( (res) => res.json() )
@@ -43,7 +43,5 @@ var client_abc = `https://www.instagram.com/${client_username}/?__a=1`;
 //   }, 2000)
  
 
- }
 
- fetchnow()
         
