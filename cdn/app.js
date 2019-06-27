@@ -12,7 +12,7 @@
 
 var client_username = document.getElementById("show").innerText;
     
-var client_abc = `https://www.instagram.com/${x}/?__a=1`;
+var client_abc = `https://www.instagram.com/${client_username}/?__a=1`;
 
 
 // document.getElementById("show").innerText = "";
