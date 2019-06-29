@@ -1,61 +1,65 @@
- 
-// var current_user;
+var client_data = document.querySelectorAll("#code")[0].dataset;
 
-// function sendusername(event){
-//   event.preventDefault();
-//   console.log(event.target.username.value)
-//   var current_user = event.target.username.value;
-//   fetchnow(current_user)
-//   return current_user;
-// }
+var exp_data = document.querySelectorAll("#code")[0].dataset;
+
+current_user = client_data.currentuser;
+rows = client_data.rows;
+posts = client_data.posts;
+gap = client_data.gap;
 
 
-var client_username = document.getElementById("show").innerText;
-    
-var client_abc = `https://www.instagram.com/${client_username}/?__a=1`;
 
-
-// document.getElementById("show").innerText = "";
+console.log(exp_data)
+console.log(gap)
 
 
  
- function fetchnow(client_abc){
+ function fetchnow(current_user, rows, posts, gap){
 
-  fetch( `https://www.instagram.com/${client_abc}/?__a=1` )
+  fetch( `https://www.instagram.com/${current_user}/?__a=1` )
   .then( (res) => res.json() )
   .then( (data) => {
-   
-  //   console.log(data.graphql.user.edge_owner_to_timeline_media.edges[0].node.display_url)
-    
-  for(i=0; i<10; i++) {
 
-    photo = data.graphql.user.edge_owner_to_timeline_media.edges[i].node.display_url;
-
-
-  //   console.log(data.graphql.user.edge_owner_to_timeline_media)
-  //   console.log(data.graphql)
-
-  var node = document.createElement("img");
-  node.setAttribute('src', `${photo}`);
-  node.setAttribute('class', 'insta')
-  document.getElementById("show").appendChild(node);
+    if(posts){
+      posts
+    }else{
+     posts = data.graphql.user.edge_owner_to_timeline_media.edges.length;
+    }
  
-  //   document.getElementById('show').innerHTML = `<img src=${photo} alt="" height="500px" width="500px">`
+    
+    for(i=0; i<posts; i++) {
 
-    console.log(photo)
-
-  }
+      photo = data.graphql.user.edge_owner_to_timeline_media.edges[i].node.display_url;
+    
+      var node = document.createElement("img");
+      var rozhok_wrapper = document.createElement("div")
+      rozhok_wrapper.setAttribute('id', 'rozhok_wrapper')
+      rozhok_wrapper.setAttribute('style', `display: grid; grid-template-columns:repeat(${rows}, 1fr); grid-gap: ${gap}`)
+      node.setAttribute('src', `${photo}`);
+      node.setAttribute('class', 'insta');
+      node.setAttribute('style', `display: grid; grid-template-columns:repeat(${rows}, 1fr)`)
+    
+      if(i==0){
+        document.getElementById("code").appendChild(rozhok_wrapper);
+      }
+      document.getElementById("rozhok_wrapper").appendChild(node);
+    
+     
+    
+      }
+    
 
   
 
   } )
 
-  setTimeout(() => {
-    document.getElementById('code').style.display = "block";
-  }, 2000)
- 
-
  }
 
- fetchnow()
+ fetchnow(current_user, rows, posts, gap)
+
+
+
+//  Client side HTML code
+
+/* <div id="code" data-currentuser="nokia" data-rows="4" data-posts="12" data-gap="1rem"> */
         

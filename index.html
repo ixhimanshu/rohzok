@@ -8,7 +8,7 @@
 </head>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="cdn/app.css">
+<!-- <link rel="stylesheet" href="cdn/app.css"> -->
 <body>
 
 
@@ -39,13 +39,27 @@
           </div>
         </div>
       </nav>
+
+      
+    
     
       <!-- Page Content -->
       <div class="container">
         <div class="row">
           <div class="col-lg-4 text-center mt-4">
            <form action="" onsubmit="sendusername(event)">
-            <input name="username" type="text" class="form-control" placeholder="username">
+            <div class="form-group">
+            <input name="username" type="text" class="form-control" placeholder="username" value="nokia">
+        </div>
+        <div class="form-group">
+                <input name="rows" type="text" class="form-control" placeholder="Number of Rows" value=3>
+        </div>
+        <div class="form-group">
+          <input name="gap" type="text" class="form-control" placeholder="Gap between posts" value="5px">
+        </div>
+        <div class="form-group">
+                <input name="posts" type="text" class="form-control" placeholder="Number of Posts" value=9>
+        </div>
             <button type="submit" class="btn-primary mt-4">Submit</button>
          </form>
           </div>
@@ -54,18 +68,15 @@
                        
                     </div>
 
-                <div id="code">
+                <div id="code-wrapper">
 
                     <h4 class="mt-4 mb-4 text-center">Place this code where you want to add this widget</h4>
 
-                        <xmp>
-                                <div class="container mt-4" id="show">
-                                
-                                    </div>
-                                </xmp>
+                    <div id="code_wrapper">
 
-                      
-                        
+                    </div>
+              
+      
                 </div>    
             </div>
         </div>
