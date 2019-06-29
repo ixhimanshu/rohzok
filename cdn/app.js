@@ -8,12 +8,6 @@ posts = client_data.posts;
 gap = client_data.gap;
 
 
-console.log(client_abc);
-
-
-console.log(exp_data)
-console.log(gap)
-
 
  
  function fetchnow(current_user, rows, posts, gap){
