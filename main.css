@@ -1,0 +1,85 @@
+@import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
+body {
+  font-family: "Lato", sans-serif;
+}
+body h1 {
+  color: blue;
+}
+
+p {
+  margin: 0;
+}
+
+.insta {
+  width: 200px;
+  height: 200px;
+  /* display: contents; */
+  /* margin: 1rem; */
+  box-shadow: 0 5px 10px #ccc;
+}
+
+.post_wrap {
+  position: relative;
+}
+
+.post_wrap p {
+  margin-left: 0.3rem;
+}
+
+.post_wrap:hover .hover {
+  visibility: visible;
+  opacity: 1;
+}
+
+.hover {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  visibility: hidden;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* transition effect. not necessary */
+  transition: opacity 0.2s, visibility 0.2s;
+}
+
+#rozhok_wrapper {
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-group, .input-group {
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+}
+
+.form-group, .input-group label {
+  margin-right: 0.5rem;
+  font-weight: 500;
+}
+
+.form-group input[type=text] {
+  width: 100%;
+}
+
+.input-group input[type=checkbox] {
+  width: 1rem !important;
+  height: 1rem !important;
+}
+
+svg {
+  padding-left: 0.3rem;
+}
+
+.input-group .form-group {
+  width: 100%;
+}
+
+/*# sourceMappingURL=main.css.map */

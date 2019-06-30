@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="main.css">
 <!-- <link rel="stylesheet" href="cdn/app.css"> -->
 <body>
 
@@ -46,36 +46,74 @@
       <!-- Page Content -->
       <div class="container">
         <div class="row">
-          <div class="col-lg-4 text-center mt-4">
+          <div class="col-lg-5 text-center mt-4">
            <form action="" onsubmit="sendusername(event)">
+              
             <div class="form-group">
-            <input name="username" type="text" class="form-control" placeholder="username" value="nokia">
+                <div class="dropdown">
+                  <label for="">Search By:</label>
+                    <select class="form-control" name="search_by">
+                        <option value="o_username">Username</option>
+                        <option value="hash_tag">Hash Tag</option>
+                        <!-- <option>Location</option> -->
+                    </select> 
+                  </div>
+            <input name="username" type="text" class="form-control mt-2" placeholder="username" value="nokia" required>
         </div>
         <div class="form-group">
+            <label for="username">Rows</label>
                 <input name="rows" type="text" class="form-control" placeholder="Number of Rows" value=3>
         </div>
         <div class="form-group">
+            <label for="username">Gap</label>
           <input name="gap" type="text" class="form-control" placeholder="Gap between posts" value="5px">
         </div>
         <div class="form-group">
+            <label for="username">Posts</label>
                 <input name="posts" type="text" class="form-control" placeholder="Number of Posts" value=9>
+        </div>
+        <div class="input-group">
+            <label for="username">Click Action</label>
+            <div class="form-group">
+                <div class="dropdown">
+                    <select class="form-control" name="redirect_to">
+                        <option value="redirect_post">Post</option>
+                        <option value="redirect_profile">Profile</option>
+                    </select> 
+                  </div>
+        </div>
+       
+      
+    </div>
+
+        <!-- <div class="form-group">
+            <label for="username">Image Height</label>
+            <input name="img_height" type="text" class="form-control" placeholder="Image Height" value=200px>
+          </div>
+          <div class="form-group">
+              <label for="username">Image Width</label>
+              <input name="img_width" type="text" class="form-control" placeholder="Image Width" value=200px>
+            </div> -->
+        <div class="form-group">
+            <label for="username">Widget Width</label>
+          <input name="widget_width" type="text" class="form-control" placeholder="Widget Width" value=450px>
         </div>
             <button type="submit" class="btn-primary mt-4">Submit</button>
          </form>
           </div>
-          <div class="col-lg-8 text-center mt-4">
+          <div class="col-lg-7 text-center mt-4">
                 <div class="container mt-4" id="show">
                        
                     </div>
 
-                <div id="code-wrapper">
+                      <div id="code-wrapper">
 
-                    <h4 class="mt-4 mb-4 text-center">Place this code where you want to add this widget</h4>
+                          <h4 class="mt-4 mb-4 text-center">Place this code where you want to add this widget</h4>
 
-                    <div id="code_wrapper">
+                          <div id="code_wrapper">
 
-                    </div>
-              
+                          </div>
+                    
       
                 </div>    
             </div>
