@@ -7,16 +7,34 @@ function sendusername(event){
   var search_by =  event.target.search_by.value;
   var redirect_to = event.target.redirect_to.value;
   var widget_width = event.target.widget_width.value;
+  var style_by = event.target.style_by.value;
+
+  
+
+  
+  if(style_by == "style_1") {
+    element = document.getElementById('show');
+    element.classList.remove("style_2");
+    element.classList.add("style_1");
+    
+  } if( style_by == "style_2" ){
+    element = document.getElementById('show');
+    element.classList.remove("style_1");
+    element.classList.add("style_2");
+    
+  }
+   
+   
 
  
 
-  console.log(widget_width)
+ 
 
   calc_img_size(rows,gap,widget_width)
 
     if(search_by == "o_username"){
       var fetch_url = `https://www.instagram.com/${current_user}/?__a=1&max_id=QVFCSHRNZmlOeHBlb0FqNnVtTjYxNXYwN3doUHVUUldCLU5sU0hMdGcxSldYUGdlVnBnaUtnbW83RmgxMnl5RFBMdTBuOGYyb3NwN1k4clJ3XzZtNlF3Ng==`;
-      fetchnow( fetch_url, current_user, rows, posts, gap, widget_width, calc_img_size(rows,gap,widget_width), redirect_to );
+      fetchnow( fetch_url, current_user, rows, posts, gap, widget_width, calc_img_size(rows,gap,widget_width), redirect_to, style_by );
     }
     if(search_by == "hash_tag"){
       var fetch_url = `https://www.instagram.com/explore/tags/${current_user}/?__a=1`;
@@ -57,14 +75,15 @@ return icon_size;
 counter = 0;
 
 
-function fetchnow(fetch_url, current_user="nokia", rows, posts, gap, widget_width, img_width, redirect_to){
+function fetchnow(fetch_url, current_user="nokia", rows, posts, gap, widget_width, img_width, redirect_to, style_by){
 
   fetch( fetch_url )
   .then( (res) => res.json() )
   .then( (data) => {
 
-   console.log(data)
+  
 
+ 
     if(posts){
       posts
     }else{
@@ -73,7 +92,8 @@ function fetchnow(fetch_url, current_user="nokia", rows, posts, gap, widget_widt
 
   for(i=0; i<posts; i++) {
     
-
+    // profile photo
+    profile_pic = data.graphql.user.profile_pic_url;
     // icon size
     icon_size = img_width/6;
     // photo source
@@ -122,17 +142,39 @@ function fetchnow(fetch_url, current_user="nokia", rows, posts, gap, widget_widt
     // hover division
     var hover_div = document.createElement("div")
     hover_div.setAttribute('class', 'hover');
+    hover_div.setAttribute('id', 'hover');
     hover_div.innerHTML = `
-    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 51.997 51.997" style="enable-background:new 0 0 51.997 51.997;" xml:space="preserve" width=${icon_size}px height=${icon_size}px class=""><g><g>
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 51.997 51.997" fill="blue" style="enable-background:new 0 0 51.997 51.997;" xml:space="preserve" width=${icon_size}px height=${icon_size}px class=""><g><g>
     <path d="M51.911,16.242C51.152,7.888,45.239,1.827,37.839,1.827c-4.93,0-9.444,2.653-11.984,6.905   c-2.517-4.307-6.846-6.906-11.697-6.906c-7.399,0-13.313,6.061-14.071,14.415c-0.06,0.369-0.306,2.311,0.442,5.478   c1.078,4.568,3.568,8.723,7.199,12.013l18.115,16.439l18.426-16.438c3.631-3.291,6.121-7.445,7.199-12.014   C52.216,18.553,51.97,16.611,51.911,16.242z M49.521,21.261c-0.984,4.172-3.265,7.973-6.59,10.985L25.855,47.481L9.072,32.25   c-3.331-3.018-5.611-6.818-6.596-10.99c-0.708-2.997-0.417-4.69-0.416-4.701l0.015-0.101C2.725,9.139,7.806,3.826,14.158,3.826   c4.687,0,8.813,2.88,10.771,7.515l0.921,2.183l0.921-2.183c1.927-4.564,6.271-7.514,11.069-7.514   c6.351,0,11.433,5.313,12.096,12.727C49.938,16.57,50.229,18.264,49.521,21.261z" data-original="#000000" class="active-path" data-old_color="#000000" fill="#FFFFFF"/>
     </g></g> </svg>
      <p> ${liked_by} </p> 
      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 60 60" style="enable-background:new 0 0 60 60;" xml:space="preserve" width=${icon_size}px height=${icon_size}px class=""><g><path d="M55.232,43.104C58.354,38.745,60,33.705,60,28.5c0-14.888-13.458-27-30-27S0,13.612,0,28.5s13.458,27,30,27  c4.262,0,8.378-0.79,12.244-2.348c6.805,3.927,16.212,5.282,16.618,5.338c0.046,0.007,0.093,0.01,0.139,0.01  c0.375,0,0.725-0.211,0.895-0.554c0.192-0.385,0.116-0.849-0.188-1.153C57.407,54.493,55.823,49.64,55.232,43.104z M42.84,51.182  L42.84,51.182c-2.11-1.302-4.467-2.814-5.017-3.249c-0.296-0.432-0.88-0.563-1.337-0.29c-0.299,0.179-0.489,0.512-0.492,0.861  c-0.003,0.589,0.006,0.77,4.081,3.316C36.865,52.93,33.487,53.5,30,53.5c-15.439,0-28-11.215-28-25s12.561-25,28-25s28,11.215,28,25  c0,4.897-1.591,9.643-4.601,13.724c-0.144,0.195-0.212,0.436-0.191,0.677c0.35,4.174,1.238,9.49,3.44,13.16  C53.314,55.383,47.305,53.878,42.84,51.182z" data-original="#000000" class="active-path" data-old_color="#000000" fill="#FFFFFF"/></g> </svg>
-    <p> ${comment_by} </p> 
-    
-    
-    
-    `;
+    <p> ${comment_by} </p>`;
+
+    // profile pic
+
+  
+
+    var profile_dp = document.createElement("div");
+
+    profile_dp.setAttribute("class", "profile_dp");
+
+    profile_dp.innerHTML = `
+    <img src=${profile_pic} height:20px; width:20px> 
+    <div class="brand_wrapper">
+      <div class="brand"> 
+      <p>nokia</p> 
+      <img src="https://icon2.kisspng.com/20180611/zt/kisspng-social-media-instagram-verified-badge-symbol-compu-5b1eedb564fc38.3684025715287535894136.jpg">
+      </div>
+     <p class="location">Aveiro, Portugal</p> 
+    </div>
+    <div class="save_icon">
+    <img src="https://cdn3.iconfinder.com/data/icons/instagram-18/512/196_Flag_Instagram_Interface_Save_Tag-512.png">
+    </div> `;
+
+  
+
+
  
       document.getElementById("rozhok_wrapper").appendChild(node);
       
@@ -141,6 +183,13 @@ function fetchnow(fetch_url, current_user="nokia", rows, posts, gap, widget_widt
       for(k=0; k<all_query.length; k++){
         all_query[k].appendChild(img_wrapper);
         all_query[k].appendChild(hover_div);
+        if( style_by == "style_2" ){
+          all_query[k].appendChild(profile_dp);
+        }
+       
+        
+        
+      
       }
 
   }
